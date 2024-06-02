@@ -2,22 +2,20 @@ from . import SCREEN_SIZE, TILE_SIZE, FONT_SIZE, FONT, WHITE, BLACK, BACKGROUND_
 import random
 import pygame
 
-# Pygameの初期化
 pygame.init()
 
-# 定数の設定
-SCREEN_SIZE = 400
-TILE_SIZE = SCREEN_SIZE // 4
-FONT_SIZE = 48
-FONT = pygame.font.SysFont(None, FONT_SIZE)
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-BACKGROUND_COLOR = (30, 30, 30)
+def is_solvable(board):
+    flat_board = [tile for row in board for tile in row if tile != 0]
+    inversions = sum(sum(tile > flat_board[i] for i in range(j, len(flat_board))) for j, tile in enumerate(flat_board))
+    return inversions % 2 == 0
 
-def create_board():
-    board = list(range(1, 16)) + [0]
-    random.shuffle(board)
-    return [board[i * 4:(i + 1) * 4] for i in range(4)]
+def create_solvable_board():
+    while True:
+        board = list(range(1, 16)) + [0]
+        random.shuffle(board)
+        board = [board[i * 4:(i + 1) * 4] for i in range(4)]
+        if is_solvable(board):
+            return board
 
 def find_empty_tile(board):
     for row in range(4):
@@ -44,3 +42,8 @@ def move_tile(board, empty_tile, row, col):
         board[empty_row][empty_col], board[row][col] = board[row][col], board[empty_row][empty_col]
         return (row, col)
     return empty_tile
+
+def is_solved(board):
+    solution = list(range(1, 16)) + [0]
+    flat_board = [tile for row in board for tile in row]
+    return flat_board == solution

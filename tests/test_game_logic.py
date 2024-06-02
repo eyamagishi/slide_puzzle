@@ -2,7 +2,6 @@ import unittest
 from slide_puzzle.game_logic import create_board, find_empty_tile, move_tile
 
 class TestGameLogic(unittest.TestCase):
-    
     def test_create_board(self):
         board = create_board()
         self.assertEqual(len(board), 4)
