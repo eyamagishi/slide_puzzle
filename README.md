@@ -110,6 +110,6 @@ python -m unittest discover -s tests
 5. プルリクエストを開きます。
 
 ## 連絡先
-Author: eyamagishi
-Email: e.yamagishi0625@example.com
-GitHub: [eyamagishi](https://github.com/eyamagishi)
+Author: eyamagishi  
+Email: e.yamagishi0625@example.com  
+GitHub: [eyamagishi](https://github.com/eyamagishi)  
