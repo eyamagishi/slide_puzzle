@@ -1,7 +1,7 @@
 import pygame
+
 pygame.init()
 
-# 定数の設定
 SCREEN_SIZE = 400
 TILE_SIZE = SCREEN_SIZE // 4
 FONT_SIZE = 48
